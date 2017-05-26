@@ -1,6 +1,5 @@
 # SocialLoginKit
 
-[![CI Status](http://img.shields.io/travis/magicmon/SocialLoginKit.svg?style=flat)](https://travis-ci.org/magicmon/SocialLoginKit)
 [![Version](https://img.shields.io/cocoapods/v/SocialLoginKit.svg?style=flat)](http://cocoapods.org/pods/SocialLoginKit)
 [![License](https://img.shields.io/cocoapods/l/SocialLoginKit.svg?style=flat)](http://cocoapods.org/pods/SocialLoginKit)
 [![Platform](https://img.shields.io/cocoapods/p/SocialLoginKit.svg?style=flat)](http://cocoapods.org/pods/SocialLoginKit)
