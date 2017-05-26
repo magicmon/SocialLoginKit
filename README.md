@@ -62,13 +62,13 @@ Add the key related to SocialLoginKit to the Info.plist. These are the permissio
 
 This is the same as the Info.list setting for each site.
 
-![Facebook Getting Started](https://developers.facebook.com/docs/ios/getting-started)
-![카카오 개발 가이드 > iOS 개발가이드 > 시작하기](https://developers.kakao.com/docs/ios#시작하기-개발환경-구성)
+[Facebook Getting Started](https://developers.facebook.com/docs/ios/getting-started)
+[카카오 개발 가이드 > iOS 개발가이드 > 시작하기](https://developers.kakao.com/docs/ios#시작하기-개발환경-구성)
 
 ## Author
 
-![magicmon](https://magicmon.github.io)
+magicmon, https://magicmon.github.com 
 
 ## License
 
-SocialLoginKit is available under the MIT license. See the LICENSE file for more info.
+**SocialLoginKit** is available under the MIT license. See the LICENSE file for more info.
