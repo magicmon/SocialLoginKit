@@ -17,10 +17,6 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Installation
 
-SocialLoginKit is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-
 Each site can be added, and all can be added.
 
 If you want FacebookKit
@@ -43,7 +39,6 @@ All of them
 pod 'SocialLoginKit/Faceook'
 pod 'SocialLoginKit/Naver'
 pod 'SocialLoginKit/Kakao'
-
 ```
 
 ## Setting
