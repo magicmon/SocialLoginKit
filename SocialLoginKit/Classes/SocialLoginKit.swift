@@ -10,10 +10,10 @@ import UIKit
 
 public enum SocialLoginKitType: String {
     case facebook   = "FACEBOOK"
-    case kakao      = "KAKAO"
     case naver      = "NAVER"
+    case kakao      = "KAKAO"
     
-    static let allValues = [facebook, kakao, naver]
+    static let allValues = [facebook, naver, kakao]
 }
 
 // 요청타입

@@ -33,7 +33,7 @@ pod "SocialLoginKit/Kakao"
 
 ### Import
 
-Info.plist에 아래 항목 추가
+Add the entry to the Info.plist.
 
 ## Usage
 ```
