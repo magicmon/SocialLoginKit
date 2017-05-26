@@ -16,8 +16,19 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 SocialLoginKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
+If you want Facebook 
 ```ruby
-pod "SocialLoginKit"
+pod "SocialLoginKit/Faceook"
+```
+
+with Naver
+```ruby
+pod "SocialLoginKit/Naver"
+```
+
+with Kakao
+```ruby
+pod "SocialLoginKit/Kakao"
 ```
 
 ### Import

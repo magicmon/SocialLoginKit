@@ -9,9 +9,9 @@
 import UIKit
 
 public enum SocialLoginKitType: String {
-    case facebook   = "FACEBOOK"     /// 페이스북
-    case kakao      = "KAKAO"        /// 카카오
-    case naver      = "NAVER"        /// 네이버
+    case facebook   = "FACEBOOK"
+    case kakao      = "KAKAO"
+    case naver      = "NAVER"
     
     static let allValues = [facebook, kakao, naver]
 }
@@ -67,27 +67,27 @@ public class SocialLoginKit: NSObject {
             FacebookKit.sharedInstance.publishPermissions = fbPublishPermissions
         #endif
         
-//        #if Naver
-//            guard let naverConsumerKey = socials["NaverConsumerKey"] as? String else {
-//                fatalError("not found NaverConsumerKey at SocialLoginKit list")
-//            }
-//            NaverKit.sharedInstance.consumerKey = naverConsumerKey
-//            
-//            guard let naverConsumerSecret = socials["NaverConsumerSecret"] as? String else {
-//                fatalError("not found NaverConsumerSecret at SocialLoginKit list")
-//            }
-//            NaverKit.sharedInstance.consumerSecret = naverConsumerSecret
-//            
-//            guard let naverAppName = socials["NaverAppName"] as? String else {
-//                fatalError("not found NaverAppName at SocialLoginKit list")
-//            }
-//            NaverKit.sharedInstance.appName = naverAppName
-//            
-//            guard let serviceURLScheme = socials["NaverServiceURLScheme"] as? String else {
-//                fatalError("not found NaverServiceURLScheme at SocialLoginKit list")
-//            }
-//            NaverKit.sharedInstance.serviceURLScheme = serviceURLScheme
-//        #endif
+        #if Naver
+            guard let naverConsumerKey = socials["NaverConsumerKey"] as? String else {
+                fatalError("not found NaverConsumerKey at SocialLoginKit list")
+            }
+            NaverKit.sharedInstance.consumerKey = naverConsumerKey
+            
+            guard let naverConsumerSecret = socials["NaverConsumerSecret"] as? String else {
+                fatalError("not found NaverConsumerSecret at SocialLoginKit list")
+            }
+            NaverKit.sharedInstance.consumerSecret = naverConsumerSecret
+            
+            guard let naverAppName = socials["NaverAppName"] as? String else {
+                fatalError("not found NaverAppName at SocialLoginKit list")
+            }
+            NaverKit.sharedInstance.appName = naverAppName
+            
+            guard let serviceURLScheme = socials["NaverServiceURLScheme"] as? String else {
+                fatalError("not found NaverServiceURLScheme at SocialLoginKit list")
+            }
+            NaverKit.sharedInstance.serviceURLScheme = serviceURLScheme
+        #endif
     }
     
     
@@ -101,11 +101,11 @@ public class SocialLoginKit: NSObject {
             for socialInstance in socialInstances {
                 socialInstance.delegate = delegate
                 
-//                #if Naver
-//                    if let naverInstance = socialInstance as? NaverKit {
-//                        NaverThirdPartyLoginConnection.getSharedInstance().delegate = naverInstance
-//                    }
-//                #endif
+                #if Naver
+                    if let naverInstance = socialInstance as? NaverKit {
+                        NaverThirdPartyLoginConnection.getSharedInstance().delegate = naverInstance
+                    }
+                #endif
             }
         }
     }

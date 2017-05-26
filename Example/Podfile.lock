@@ -30,6 +30,8 @@ PODS:
     - FBSDKLoginKit (= 4.22.0)
     - FBSDKShareKit (= 4.22.0)
     - SocialLoginKit/Core
+  - SocialLoginKit/Naver (0.1.0):
+    - SocialLoginKit/Core
 
 DEPENDENCIES:
   - FBSnapshotTestCase
@@ -37,6 +39,7 @@ DEPENDENCIES:
   - Nimble-Snapshots
   - Quick (~> 1.0.0)
   - SocialLoginKit/Facebook (from `../`)
+  - SocialLoginKit/Naver (from `../`)
 
 EXTERNAL SOURCES:
   SocialLoginKit:
@@ -51,8 +54,8 @@ SPEC CHECKSUMS:
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Nimble-Snapshots: e743439f26c2fa99d8f7e0d7c01c99bcb40aa6f2
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
-  SocialLoginKit: ac7a5d0d8f14d866a232d81836d6e31249e4e6f6
+  SocialLoginKit: 20ab786ada06b5074705d09f7ea491339a083c81
 
-PODFILE CHECKSUM: b2507519849244e0a37521c005ec40b0f6a939d7
+PODFILE CHECKSUM: 44f80275199367c67cd5ebfa2866dea4d7d8692d
 
 COCOAPODS: 1.2.0

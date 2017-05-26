@@ -44,4 +44,12 @@ multiple social login kit. Support to Naver, Kakao and Facebook
       sp.resource_bundle = {'FacebookBundle' => ['SocialLoginKit/Facebook/Dependencies/Resources/*.png']}
       sp.pod_target_xcconfig  = { "OTHER_LDFLAGS" => "-all_load -ObjC", "OTHER_SWIFT_FLAGS"=> '$(inherited) "-DFacebook"'}
   end
+
+  s.subspec 'Naver' do |sp|
+      sp.dependency 'SocialLoginKit/Core'
+      sp.source_files         = 'SocialLoginKit/Naver/Classes/**/*', 'SocialLoginKit/Naver/Dependencies/thirdPartyModule/*.[h,m]'
+      sp.vendored_libraries   = 'SocialLoginKit/Naver/Dependencies/thirdPartyModule/libNaverLogin.a'
+      sp.resource             = 'SocialLoginKit/Naver/Dependencies/Resources/NaverAuth.bundle'
+      sp.pod_target_xcconfig  = { "OTHER_LDFLAGS" => "-all_load -ObjC", "OTHER_SWIFT_FLAGS"=> '$(inherited) "-DNaver"'}
+  end
 end
