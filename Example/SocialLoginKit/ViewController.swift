@@ -2,8 +2,8 @@
 //  ViewController.swift
 //  SocialLoginKit
 //
-//  Created by sagun25si@gmail.com on 05/26/2017.
-//  Copyright (c) 2017 sagun25si@gmail.com. All rights reserved.
+//  Created by magicmon on 2017. 5. 26..
+//  Copyright (c) 2017 magicmon. All rights reserved.
 //
 
 import UIKit

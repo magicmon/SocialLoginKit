@@ -1,7 +1,7 @@
 use_frameworks!
 
 target 'SocialLoginKit_Example' do
-  pod 'SocialLoginKit', :path => '../'
+    pod 'SocialLoginKit/Facebook', :path => '../'
 
   target 'SocialLoginKit_Tests' do
     inherit! :search_paths

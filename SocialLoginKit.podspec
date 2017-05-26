@@ -22,20 +22,26 @@ multiple social login kit. Support to Naver, Kakao and Facebook
                        DESC
 
   s.homepage         = 'https://github.com/magicmon/SocialLoginKit'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'magicmon' => 'sagun25si@gmail.com' }
-  s.source           = { :git => 'https://github.com/sagun25si@gmail.com/SocialLoginKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/magicmon/SocialLoginKit.git', :tag => s.version.to_s }
 
+  s.platform = :ios
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'SocialLoginKit/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'SocialLoginKit' => ['SocialLoginKit/Assets/*.png']
-  # }
+  s.default_subspec = 'Core'
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.subspec 'Core' do |sp|
+    sp.source_files = 'SocialLoginKit/Classes/**/*'
+  end
+
+  s.subspec 'Facebook' do |sp|
+      sp.dependency 'SocialLoginKit/Core'
+      sp.dependency 'FBSDKCoreKit', '4.22.0'
+      sp.dependency 'FBSDKLoginKit', '4.22.0'
+      sp.dependency 'FBSDKShareKit', '4.22.0'
+      sp.source_files = 'SocialLoginKit/Facebook/Classes/**/*.swift'
+      sp.resource_bundle = {'FacebookBundle' => ['SocialLoginKit/Facebook/Dependencies/Resources/*.png']}
+      sp.pod_target_xcconfig  = { "OTHER_LDFLAGS" => "-all_load -ObjC", "OTHER_SWIFT_FLAGS"=> '$(inherited) "-DFacebook"'}
+  end
 end
