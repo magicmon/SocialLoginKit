@@ -73,7 +73,7 @@ extension NaverKit: XMLParserDelegate {
     func parserDidEndDocument(_ parser: XMLParser) {
         currentElement = ""
 
-        if let userProfile = self.userProfile {
+        if let _ = userProfile {
             delegate?.didSuccessTask(socialType: .naver, connectType: .userProfile)
         } else { 
             delegate?.didFailTask(socialType: .naver, connectType: .userProfile, errorType: .userNotFound, error: nil)

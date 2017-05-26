@@ -18,18 +18,6 @@ extension FacebookKit: SocialLoginKitPostProtocol {
         
         if let contentURL = contentURL {
             shareContent.contentURL = URL(string: contentURL)
-        } else {
-            if let message = message {
-                shareContent.contentDescription = message
-            }
-            
-            if let imageURL = imageURL {
-                shareContent.imageURL = URL(string: imageURL)
-            }
-        }
-        
-        if let contentTitle = customInfo?[kSocialLoginKitPostContentTitle] as? String {
-            shareContent.contentTitle = contentTitle
         }
         
         if let hashtag = customInfo?[kSocialLoginKitPostHashtag] as? String {
@@ -46,7 +34,7 @@ extension FacebookKit: SocialLoginKitPostProtocol {
             return
         }
         
-        if let token = FBSDKAccessToken.current(), hasGrantedPermissions(permissions: publishPermissions) {
+        if let _ = FBSDKAccessToken.current(), hasGrantedPermissions(permissions: publishPermissions) {
             FBSDKShareAPI.share(with: shareContent, delegate: self)
         } else {
             logInWithPublishPermissions(content: shareContent, permissions: publishPermissions)
@@ -67,18 +55,6 @@ extension FacebookKit: SocialLoginKitPostProtocol {
         
         shareContent.contentURL = URL(string: contentURL)
         
-        if let message = message {
-            shareContent.contentDescription = message
-        }
-        
-        if let imageURL = imageURL {
-            shareContent.imageURL = URL(string: imageURL)
-        }
-        
-        if let contentTitle = customInfo?[kSocialLoginKitPostContentTitle] as? String {
-            shareContent.contentTitle = contentTitle
-        }
-        
         if let hashtag = customInfo?[kSocialLoginKitPostHashtag] as? String {
             if hashtag.hasPrefix("#") {
                 shareContent.hashtag = FBSDKHashtag(string: hashtag)
@@ -97,7 +73,7 @@ extension FacebookKit: SocialLoginKitPostProtocol {
 
 extension FacebookKit: FBSDKSharingDelegate {
     func sharer(_ sharer: FBSDKSharing!, didCompleteWithResults results: [AnyHashable : Any]!) {
-        if let postId = results["postId"] {
+        if let _ = results["postId"] {
             self.delegate?.didSuccessTask(socialType: .facebook, connectType: .post)
         } else {
             self.delegate?.didFailTask(socialType: .facebook, connectType: .post, errorType: .userCancel, error: nil)

@@ -10,14 +10,14 @@ import UIKit
 extension KakaoKit: SocialLoginKitPostProtocol {
     
     func post(message: String?, imageURL: String?, contentURL: String?, customInfo: [String: Any]?) {
-        post(connectType: .post, message: message, imageURL: imageURL, contentURL: contentURL, isWebLink: true, customInfo: customInfo)
+        post(type: .post, message: message, imageURL: imageURL, contentURL: contentURL, isWebLink: true, customInfo: customInfo)
     }
     
     func postDialog(fromController: UIViewController?, message: String?, imageURL: String?, contentURL: String?, customInfo: [String : Any]?) {
-        post(connectType: .post, message: message, imageURL: imageURL, contentURL: contentURL, isWebLink: true, customInfo: customInfo)
+        post(type: .post, message: message, imageURL: imageURL, contentURL: contentURL, isWebLink: true, customInfo: customInfo)
     }
     
-    internal func post(connectType connectType: SocialLoginKitTaskType, message: String?, imageURL: String?, contentURL: String?, isWebLink: Bool, customInfo: [String : Any]?) {
+    internal func post(type connectType: SocialLoginKitTaskType, message: String?, imageURL: String?, contentURL: String?, isWebLink: Bool, customInfo: [String : Any]?) {
         // 앱 설치 유무 확인
         if KOAppCall.canOpenKakaoTalkAppLink() == false {
             self.delegate?.didFailTask(socialType: .kakao, connectType: connectType, errorType: .notInstalled, error: nil)

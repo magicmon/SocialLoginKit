@@ -15,12 +15,12 @@ import FBSDKShareKit
 extension FacebookKit: SocialLoginKitLoginProtocol {
     func login(isAutoLogin: Bool, fromViewController: UIViewController) {
         
-        var readPermissions = self.readPermissions ?? ["public_profile", "email", "user_friends"]
+        let readPermissions = self.readPermissions ?? ["public_profile", "email", "user_friends"]
         
         // 자동 로그인이 돼 있는지 여부 처리
         if isAutoLogin && isValidAccessToken() {
             FBSDKAccessToken.refreshCurrentAccessToken { (connection, object, error) in
-                if let error = error {
+                if let _ = error {
                     // 토큰 갱신 시 만료 됐기 때문에 다시 권한 요청
                     self.logInWithReadPermissions(fromViewController: fromViewController, permissions: readPermissions)
                 } else {
@@ -111,7 +111,7 @@ extension FacebookKit {
      */
     func logInWithPublishPermissions(content: FBSDKShareLinkContent, permissions: [String]) {
         FBSDKLoginManager().logIn(withPublishPermissions: permissions, handler: { (loginResult, error) in
-            if let error = error {
+            if let _ = error {
                 self.delegate?.didFailTask(socialType: .facebook, connectType: .post, errorType: .unknown, error: error)
             } else {
                 if let loginResult = loginResult, loginResult.isCancelled {

@@ -5,11 +5,11 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - FBSDKCoreKit (4.22.0):
+  - FBSDKCoreKit (4.23.0):
     - Bolts (~> 1.7)
-  - FBSDKLoginKit (4.22.0):
+  - FBSDKLoginKit (4.23.0):
     - FBSDKCoreKit
-  - FBSDKShareKit (4.22.0):
+  - FBSDKShareKit (4.23.0):
     - FBSDKCoreKit
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
@@ -24,15 +24,15 @@ PODS:
     - Nimble
     - Quick
   - Quick (1.0.0)
-  - SocialLoginKit/Core (0.1.0)
-  - SocialLoginKit/Facebook (0.1.0):
-    - FBSDKCoreKit (= 4.22.0)
-    - FBSDKLoginKit (= 4.22.0)
-    - FBSDKShareKit (= 4.22.0)
+  - SocialLoginKit/Core (0.2.0)
+  - SocialLoginKit/Facebook (0.2.0):
+    - FBSDKCoreKit
+    - FBSDKLoginKit
+    - FBSDKShareKit
     - SocialLoginKit/Core
-  - SocialLoginKit/Kakao (0.1.0):
+  - SocialLoginKit/Kakao (0.2.0):
     - SocialLoginKit/Core
-  - SocialLoginKit/Naver (0.1.0):
+  - SocialLoginKit/Naver (0.2.0):
     - SocialLoginKit/Core
 
 DEPENDENCIES:
@@ -50,15 +50,15 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  FBSDKCoreKit: c693bad19feb225469eeff14452ba364522ee48b
-  FBSDKLoginKit: 1fa529fc622d7b32ebeaffbecd377180833c6d30
-  FBSDKShareKit: 21ab3c8d173f4fa20c47c1061f3a9fac5950b5fa
+  FBSDKCoreKit: d7829f5a69901cd7296105328e4c3c3fc7da6518
+  FBSDKLoginKit: 6b92bd65f319d669d2b0730e49db495ef1660566
+  FBSDKShareKit: 65751c3b9937ab9d594e6c37611ecc115ceeb448
   FBSnapshotTestCase: '094f9f314decbabe373b87cc339bea235a63e07a'
   Nimble: 415e3aa3267e7bc2c96b05fa814ddea7bb686a29
   Nimble-Snapshots: e743439f26c2fa99d8f7e0d7c01c99bcb40aa6f2
   Quick: 8024e4a47e6cc03a9d5245ef0948264fc6d27cff
-  SocialLoginKit: 8460f9fa0c60f1dd058210123361a1823f7dcc64
+  SocialLoginKit: 7fc41a0bcc339868e57ccd8bbb16411292b5007f
 
 PODFILE CHECKSUM: 963cb2673958214c895a5f0957b9d517ece495c5
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.2.1

@@ -38,8 +38,6 @@ public enum SocialLoginKitErrorType: Int {
 }
 
 
-// 추가사항
-public let kSocialLoginKitPostContentTitle    = "kSocialLoginKitPostContentTitle"
 public let kSocialLoginKitPostHashtag         = "kSocialLoginKitPostHashtag"
 public let kSocialLoginKitPostQuote           = "kSocialLoginKitPostQuote"
 
@@ -94,9 +92,7 @@ public class SocialLoginKit: NSObject {
     // MARK: - Delegate
     public weak var delegate: SocialLoginKitDelegate? {
         didSet {
-            guard let socialInstances: [SocialLoginKitProvider] = SocialLoginKitUtil<SocialLoginKitProvider>.socialInstances() else {
-                return
-            }
+            let socialInstances: [SocialLoginKitProvider] = SocialLoginKitUtil<SocialLoginKitProvider>.socialInstances()
             
             for socialInstance in socialInstances {
                 socialInstance.delegate = delegate
@@ -115,39 +111,38 @@ public class SocialLoginKit: NSObject {
 extension SocialLoginKit {
 
     public func handleApplication(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) {
-        if let socialInstances: [SocialLoginKitApplicationProtocol] = SocialLoginKitUtil<SocialLoginKitApplicationProtocol>.socialInstances() {
-            for socialInstance in socialInstances {
-                socialInstance.application(application: application, didFinishLaunchingWithOptions: launchOptions)
-            }
+        let socialInstances: [SocialLoginKitApplicationProtocol] = SocialLoginKitUtil<SocialLoginKitApplicationProtocol>.socialInstances()
+        
+        for socialInstance in socialInstances {
+            socialInstance.application(application: application, didFinishLaunchingWithOptions: launchOptions)
         }
     }
     
     public func handleApplicationWithUrl(application: UIApplication?, openURL url: URL, sourceApplication: String?, annotation: Any?) -> Bool {
-        if let socialInstances: [SocialLoginKitApplicationProtocol] = SocialLoginKitUtil<SocialLoginKitApplicationProtocol>.socialInstances() {
-            for socialInstance in socialInstances {
-                if socialInstance.handleWithUrl(application: application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
-                    return true
-                }
+        let socialInstances: [SocialLoginKitApplicationProtocol] = SocialLoginKitUtil<SocialLoginKitApplicationProtocol>.socialInstances()
+        
+        for socialInstance in socialInstances {
+            if socialInstance.handleWithUrl(application: application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
+                return true
             }
-            
         }
+        
         return false
     }
     
     public func handleDidBecomeActive(application: UIApplication) {
-        if let socialInstances: [SocialLoginKitApplicationProtocol] = SocialLoginKitUtil<SocialLoginKitApplicationProtocol>.socialInstances() {
-            for socialInstance in socialInstances {
-                socialInstance.handleDidBecomeActive(application: application)
-            }
-        }
+        let socialInstances: [SocialLoginKitApplicationProtocol] = SocialLoginKitUtil<SocialLoginKitApplicationProtocol>.socialInstances()
         
+        for socialInstance in socialInstances {
+            socialInstance.handleDidBecomeActive(application: application)
+        }
     }
     
     public func handleDidEnterBackground(application: UIApplication) {
-        if let socialInstances: [SocialLoginKitApplicationProtocol] = SocialLoginKitUtil<SocialLoginKitApplicationProtocol>.socialInstances() {
-            for socialInstance in socialInstances {
-                socialInstance.handleDidEnterBackground(application: application)
-            }
+        let socialInstances: [SocialLoginKitApplicationProtocol] = SocialLoginKitUtil<SocialLoginKitApplicationProtocol>.socialInstances()
+        
+        for socialInstance in socialInstances {
+            socialInstance.handleDidEnterBackground(application: application)
         }
     }
 }

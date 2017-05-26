@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SocialLoginKit'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'multiple social login kit. Support to Naver, Kakao and Facebook'
 
 # This description is used to generate tags and improve search results.
@@ -37,9 +37,9 @@ multiple social login kit. Support to Naver, Kakao and Facebook
 
   s.subspec 'Facebook' do |sp|
       sp.dependency 'SocialLoginKit/Core'
-      sp.dependency 'FBSDKCoreKit', '4.22.0'
-      sp.dependency 'FBSDKLoginKit', '4.22.0'
-      sp.dependency 'FBSDKShareKit', '4.22.0'
+      sp.dependency 'FBSDKCoreKit'
+      sp.dependency 'FBSDKLoginKit'
+      sp.dependency 'FBSDKShareKit'
       sp.source_files = 'SocialLoginKit/Facebook/Classes/**/*.swift'
       sp.resource_bundle = {'FacebookBundle' => ['SocialLoginKit/Facebook/Dependencies/Resources/*.png']}
       sp.pod_target_xcconfig  = { "OTHER_LDFLAGS" => "-all_load -ObjC", "OTHER_SWIFT_FLAGS"=> '$(inherited) "-DFacebook"'}
