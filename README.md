@@ -60,17 +60,17 @@ Add the key related to **SocialLoginKit** to the Info.plist. These are the permi
     <string>user_friends</string>
   </array>
   <key>NaverConsumerKey</key>
-  <string>[Naver_Consumer_Key]</string>
+  <string>{Your-Naver-Consumer-Key}</string>
   <key>NaverConsumerSecret</key>
-  <string>[Naver_Consumer_Secret]</string>
+  <string>{Your-Naver-Consumer-Secret}</string>
   <key>NaverAppName</key>
-  <string>[Naver_App_Name]</string>
+  <string>{Your-Naver-App-Name}</string>
   <key>NaverServiceURLScheme</key>
-  <string>[Naver_Service_URL_Scheme]</string>
+  <string>{Your-Naver-Service-URL-Scheme}</string>
 </dict>
 ```
 
-This is the same as the Info.list setting for each site.
+Other settings are the same as the SDK Setting Guide.
 
 [Facebook Getting Started](https://developers.facebook.com/docs/ios/getting-started)
 
