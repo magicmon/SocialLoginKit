@@ -16,26 +16,38 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 SocialLoginKit is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
-If you want Facebook 
+
+Each site can be added, and all can be added.
+
+If you want FacebookKit
 ```ruby
-pod "SocialLoginKit/Faceook"
+pod 'SocialLoginKit/Faceook'
 ```
 
 with Naver
 ```ruby
-pod "SocialLoginKit/Naver"
+pod 'SocialLoginKit/Naver'
 ```
 
 with Kakao
 ```ruby
-pod "SocialLoginKit/Kakao"
+pod 'SocialLoginKit/Kakao'
 ```
 
-### Import
+All of them
+```ruby
+pod 'SocialLoginKit/Faceook'
+pod 'SocialLoginKit/Naver'
+pod 'SocialLoginKit/Kakao'
 
-Add the key related to SocialLoginKit to the Info.plist. These are the permission key values for facebook and naver.
+```
 
-## Usage
+## Setting
+
+### Info.plist
+
+Add the key related to **SocialLoginKit** to the Info.plist. These are the permission key values for facebook and naver.
+
 ```
 <key>SocialLoginKitKey</key>
 <dict>
@@ -63,7 +75,11 @@ Add the key related to SocialLoginKit to the Info.plist. These are the permissio
 This is the same as the Info.list setting for each site.
 
 [Facebook Getting Started](https://developers.facebook.com/docs/ios/getting-started)
+
 [카카오 개발 가이드 > iOS 개발가이드 > 시작하기](https://developers.kakao.com/docs/ios#시작하기-개발환경-구성)
+
+## Usage
+
 
 ## Author
 
