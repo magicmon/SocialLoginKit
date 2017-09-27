@@ -21,11 +21,15 @@
 #import <Foundation/Foundation.h>
 #import "KOUserInfo.h"
 
+NS_ASSUME_NONNULL_BEGIN
+
 /*!
  */
 @interface KOUser : KOUserInfo
 
-@property(nonatomic, readonly) NSDictionary *properties;
+@property(nonatomic, readonly, nullable) NSString *email;
+@property(nonatomic, readonly, getter=isVerifiedEmail) BOOL verifiedEmail;
+@property(nonatomic, readonly, nullable) NSDictionary *properties;
 
 /*!
  @abstract 사용자에 대한 정보를 얻는다.
@@ -36,3 +40,14 @@
 + (instancetype)responseWithDictionary:(NSDictionary *)dictionary;
 
 @end
+
+/*!
+ 프로퍼티 키 이름
+ */
+extern NSString *const KOUserEmailPropertyKey;
+extern NSString *const KOUserIsVerifiedEmailPropertyKey;
+extern NSString *const KOUserNicknamePropertyKey;
+extern NSString *const KOUserProfileImagePropertyKey;
+extern NSString *const KOUserThumbnailImagePropertyKey;
+
+NS_ASSUME_NONNULL_END

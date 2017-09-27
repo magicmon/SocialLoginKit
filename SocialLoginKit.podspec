@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'SocialLoginKit'
-  s.version          = '0.2.0'
+  s.version          = '0.2.1'
   s.summary          = 'multiple social login kit. Support to Naver, Kakao and Facebook'
 
 # This description is used to generate tags and improve search results.
@@ -56,7 +56,7 @@ multiple social login kit. Support to Naver, Kakao and Facebook
   s.subspec 'Kakao' do |sp|
       sp.dependency 'SocialLoginKit/Core'
       sp.source_files         = 'SocialLoginKit/Kakao/Classes/**/*.{h,swift}', 'SocialLoginKit/Kakao/Dependencies/**/*.h'
-      sp.vendored_frameworks  = 'SocialLoginKit/Kakao/Dependencies/KakaoOpenSDK.framework'
+      sp.vendored_frameworks  = 'SocialLoginKit/Kakao/Dependencies/KakaoOpenSDK.framework', 'SocialLoginKit/Kakao/Dependencies/KakaoLink.framework', 'SocialLoginKit/Kakao/Dependencies/KakaoCommon.framework'
       sp.pod_target_xcconfig  = { "OTHER_LDFLAGS" => "-all_load -ObjC", "OTHER_SWIFT_FLAGS"=> '$(inherited) "-DKakao"'}
   end
 end

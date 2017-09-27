@@ -28,10 +28,7 @@
  */
 
 /*!
- @abstract KOTalkMessageReceiverType
- @constant KOTalkMessageReceiverTypeUser
- @constant KOTalkMessageReceiverTypeFriend
- @constant KOTalkMessageReceiverTypeChat
+ @abstract KOTalkMessageReceiverType (Deprecated)
  */
 typedef NS_ENUM(NSInteger, KOTalkMessageReceiverType) {
     KOTalkMessageReceiverTypeUser = 0,
@@ -40,11 +37,55 @@ typedef NS_ENUM(NSInteger, KOTalkMessageReceiverType) {
 };
 
 /*!
+ @abstract KOTalkMessageReceiverIDType
+ @constant KOTalkMessageReceiverIDTypeUUID 메시지 수신 대상의 UUID. KOUserInfo.uuid
+ @constant KOTalkMessageReceiverIDTypeUser 메시지 수신 대상의 사용자 ID. KOUserInfo.ID
+ @constant KOTalkMessageReceiverIDTypeChat 메시지 수신 대상 채팅방 ID. KOChat.ID
+ */
+typedef NS_ENUM(NSInteger, KOTalkMessageReceiverIDType) {
+    KOTalkMessageReceiverIDTypeUser,
+    KOTalkMessageReceiverIDTypeChat,
+    KOTalkMessageReceiverIDTypeUUID,
+};
+
+/*!
  인증된 session 정보를 바탕으로 각종 카카오톡 API를 호출할 수 있습니다.
  */
 @interface KOSessionTask (TalkAPI)
 
-#pragma mark - KakaoTalk
+#pragma mark - Send Message V2
+
+/*!
+ @abstract 미리 지정된 메시지 템플릿(V2)을 사용하여, 카카오톡으로 메시지를 전송합니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.
+ @param templateId 전송할 메시지 템플릿 ID.
+ @param templateArgs 메시지 템플릿을 완성하기 위해 필요한 추가 파라미터 정보.
+ @param receiverType 메시지 수신 대상 ID의 타입.
+ @param receiverId 메시지를 수신할 대상(채팅방 또는 사용자)의 ID.
+ @param completionHandler 요청 완료시 실행될 block. 오류 처리와 전송 완료 시 수행된다.
+ */
++ (instancetype)talkMessageSendTaskWithTemplateId:(NSString *)templateId
+                                     templateArgs:(NSDictionary<NSString *, id> *)templateArgs
+                                     receiverType:(KOTalkMessageReceiverIDType)receiverType
+                                       receiverId:(id)receiverId
+                                completionHandler:(void (^)(NSError *error))completionHandler;
+
+
+
+#pragma mark - Send Memo V2
+
+/*!
+ @abstract 미리 지정된 메시지 템플릿(V2)을 사용하여, 카카오톡의 "나와의 채팅방"으로 메시지를 전송합니다. 모든 앱에서 호출 가능합니다.
+ @param templateId 전송할 메시지 템플릿 ID.
+ @param templateArgs 메시지 템플릿을 완성하기 위해 필요한 추가 파라미터 정보.
+ @param completionHandler 요청 완료시 실행될 block. 오류 처리와 전송 완료 시 수행된다.
+ */
++ (instancetype)talkMemoSendTaskWithTemplateId:(NSString *)templateId
+                                  templateArgs:(NSDictionary<NSString *, id> *)templateArgs
+                             completionHandler:(void (^)(NSError *error))completionHandler;
+
+
+
+#pragma mark - Profile
 
 /*!
  @abstract 현재 로그인된 사용자의 카카오톡 프로필 정보를 얻을 수 있습니다.
@@ -60,6 +101,20 @@ typedef NS_ENUM(NSInteger, KOTalkMessageReceiverType) {
 + (instancetype)talkProfileTaskWithSecureResource:(BOOL)secureResource
                                 completionHandler:(KOSessionTaskCompletionHandler)completionHandler;
 
+
+#pragma mark - Chat List
+
+/*!
+ @abstract 카카오톡 채팅방 목록을 가져옵니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.
+ @param context 채팅방 목록을 불러올 때, 페이징 정보를 처리하기 위한 context.
+ @param completionHandler 카카오톡 채팅방 목록을 가져와서 처리하는 핸들러.
+ */
++ (instancetype)talkChatListTaskWithContext:(KOChatContext *)context
+                          completionHandler:(void (^)(NSArray *chats, NSError *error))completionHandler;
+
+
+#pragma mark - Deprecated
+
 /*!
  @abstract 미리 지정된 Template Message를 사용하여, 카카오톡으로 메시지를 전송합니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.
  @param templateID 미리 지정된 템플릿 메시지 ID.
@@ -70,19 +125,7 @@ typedef NS_ENUM(NSInteger, KOTalkMessageReceiverType) {
 + (instancetype)talkSendMessageTaskWithTemplateID:(NSString *)templateID
                                      receiverUser:(KOUserInfo *)user
                                  messageArguments:(NSDictionary *)messageArguments
-                                completionHandler:(void (^)(NSError *error))completionHandler;
-
-/*!
- @abstract 미리 지정된 Template Message를 사용하여, 카카오톡으로 메시지를 전송합니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.<br>
- @param templateID 미리 지정된 템플릿 메시지 ID.
- @param receiverFriend 이 메시지를 수신할 친구.
- @param messageArguments 템플릿 메시지를 만들 때, 채워줘야할 파라미터들.
- @param completionHandler 요청 완료시 실행될 block. 오류 처리와 전송 완료 시 수행된다.
- */
-+ (instancetype)talkSendMessageTaskWithTemplateID:(NSString *)templateID
-                                   receiverFriend:(KOFriend *)receiverFriend
-                                 messageArguments:(NSDictionary *)messageArguments
-                                completionHandler:(void (^)(NSError *error))completionHandler DEPRECATED_MSG_ATTRIBUTE("Use talkSendMessageTaskWithTemplateID:receiverUser:messageArguments:completionHandler in v1.0.46");
+                                completionHandler:(void (^)(NSError *error))completionHandler DEPRECATED_ATTRIBUTE;
 
 /*!
  @abstract 미리 지정된 Template Message를 사용하여, 카카오톡으로 메시지를 전송합니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.
@@ -94,15 +137,7 @@ typedef NS_ENUM(NSInteger, KOTalkMessageReceiverType) {
 + (instancetype)talkSendMessageTaskWithTemplateID:(NSString *)templateID
                                      receiverChat:(KOChat *)receiverChat
                                  messageArguments:(NSDictionary *)messageArguments
-                                completionHandler:(void (^)(NSError *error))completionHandler;
-
-/*!
- @abstract 카카오톡 채팅방 목록을 가져옵니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.
- @param context 채팅방 목록을 불러올 때, 페이징 정보를 처리하기 위한 context.
- @param completionHandler 카카오톡 채팅방 목록을 가져와서 처리하는 핸들러.
- */
-+ (instancetype)talkChatListTaskWithContext:(KOChatContext *)context
-                          completionHandler:(void (^)(NSArray *chats, NSError *error))completionHandler;
+                                completionHandler:(void (^)(NSError *error))completionHandler DEPRECATED_ATTRIBUTE;
 
 /*!
  @abstract 미리 지정된 Message Template을 사용하여, 카카오톡의 "나와의 채팅방"으로 메시지를 전송합니다. 모든 앱에서 호출 가능합니다.
@@ -112,7 +147,7 @@ typedef NS_ENUM(NSInteger, KOTalkMessageReceiverType) {
  */
 + (instancetype)talkSendMemoTaskWithTemplateID:(NSString *)templateID
                               messageArguments:(NSDictionary *)messageArguments
-                             completionHandler:(void (^)(NSError *error))completionHandler;
+                             completionHandler:(void (^)(NSError *error))completionHandler DEPRECATED_ATTRIBUTE;
 
 
 @end

@@ -11,7 +11,7 @@ import FBSDKShareKit
 import FBSDKLoginKit
 
 extension FacebookKit: SocialLoginKitInviteProtocol {
-    func invite(fromController: UIViewController?, inviteLink: String, imageURL: String?, message: String?, customInfo: [String: Any]?) {
+    func invite(fromController: UIViewController?, inviteLink: String, imageURL: String?, message: String, customInfo: [String: Any]?) {
         
         let content = FBSDKAppInviteContent()
         content.destination = .facebook

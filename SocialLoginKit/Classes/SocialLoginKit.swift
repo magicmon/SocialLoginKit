@@ -202,22 +202,21 @@ extension SocialLoginKit {
 
 // MARK: - Post
 extension SocialLoginKit {
-    public func post(socialType: SocialLoginKitType, message: String? = nil, imageURL: String? = nil, contentURL: String? = nil, customInfo: [String: Any]? = nil) {
+    public func post(socialType: SocialLoginKitType,
+                     message: String,
+                     imageURL: String? = nil,
+                     contentURL: String? = nil,
+                     customInfo: [String: Any]? = nil,
+                     from viewController: UIViewController) {
         if let socialInstance: SocialLoginKitPostProtocol = SocialLoginKitUtil<SocialLoginKitPostProtocol>.socialInstance(socialType: socialType) {
-            socialInstance.post(message: message, imageURL: imageURL, contentURL: contentURL, customInfo: customInfo)
-        }
-    }
-    
-    public func postDialog(socialType: SocialLoginKitType, fromController: UIViewController?, message: String? = nil, imageURL: String? = nil, contentURL: String? = nil, customInfo: [String: Any]? = nil) {
-        if let socialInstance: SocialLoginKitPostProtocol = SocialLoginKitUtil<SocialLoginKitPostProtocol>.socialInstance(socialType: socialType) {
-            socialInstance.postDialog(fromController: fromController, message: message, imageURL: imageURL, contentURL: contentURL, customInfo: customInfo)
+            socialInstance.post(message: message, imageURL: imageURL, contentURL: contentURL, customInfo: customInfo, from: viewController)
         }
     }
 }
 
 // MARK: - Invite
 extension SocialLoginKit {
-    public func invite(socialType: SocialLoginKitType, fromController: UIViewController?, inviteLink: String, imageURL: String?, message: String?, customInfo: [String: Any]?) {
+    public func invite(socialType: SocialLoginKitType, fromController: UIViewController?, inviteLink: String, imageURL: String?, message: String, customInfo: [String: Any]?) {
         if let socialInstance: SocialLoginKitInviteProtocol = SocialLoginKitUtil<SocialLoginKitInviteProtocol>.socialInstance(socialType: socialType) {
             socialInstance.invite(fromController: fromController, inviteLink: inviteLink, imageURL: imageURL, message: message, customInfo: customInfo)
         }

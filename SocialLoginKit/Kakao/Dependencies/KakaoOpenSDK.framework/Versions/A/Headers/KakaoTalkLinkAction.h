@@ -45,6 +45,7 @@ typedef NS_ENUM(NSInteger, KakaoTalkLinkActionDeviceType) {
  링크/버튼 객체를 생성할 시에 필요한 Action객체 <br>
  즉 카카오링크가 생성한 링크/버튼을 클릭할 시에 이루어질 Action에 대한 정의를 담고 있다.
  */
+DEPRECATED_MSG_ATTRIBUTE("Use 'KakaoLink' framework.")
 @interface KakaoTalkLinkAction : NSObject
 
 @property(nonatomic, readonly) NSString *type;

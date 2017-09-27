@@ -13,36 +13,33 @@ import FBSDKShareKit
 import FBSDKLoginKit
 
 extension FacebookKit: SocialLoginKitPostProtocol {
-    func post(message: String?, imageURL: String?, contentURL: String?, customInfo: [String: Any]?) {
-        let shareContent  = FBSDKShareLinkContent()
+    func post(message: String, imageURL: String?, contentURL: String?, customInfo: [String: Any]?, from viewController: UIViewController) {
+//        let shareContent  = FBSDKShareLinkContent()
+//        
+//        if let contentURL = contentURL {
+//            shareContent.contentURL = URL(string: contentURL)
+//        }
+//        
+//        if let hashtag = customInfo?[kSocialLoginKitPostHashtag] as? String {
+//            shareContent.hashtag = FBSDKHashtag(string: hashtag)
+//        }
+//        
+//        if let quote = customInfo?[kSocialLoginKitPostQuote] as? String {
+//            shareContent.quote = quote
+//        }
+//        
+//        // 쓰기 권한이 없다면 에러 반환
+//        guard let publishPermissions = self.publishPermissions else {
+//            self.delegate?.didFailTask(socialType: .facebook, connectType: .post, errorType: .permission, error: nil)
+//            return
+//        }
+//        
+//        if let _ = FBSDKAccessToken.current(), hasGrantedPermissions(permissions: publishPermissions) {
+//            FBSDKShareAPI.share(with: shareContent, delegate: self)
+//        } else {
+//            logInWithPublishPermissions(content: shareContent, permissions: publishPermissions, from: viewController)
+//        }
         
-        if let contentURL = contentURL {
-            shareContent.contentURL = URL(string: contentURL)
-        }
-        
-        if let hashtag = customInfo?[kSocialLoginKitPostHashtag] as? String {
-            shareContent.hashtag = FBSDKHashtag(string: hashtag)
-        }
-        
-        if let quote = customInfo?[kSocialLoginKitPostQuote] as? String {
-            shareContent.quote = quote
-        }
-        
-        // 쓰기 권한이 없다면 에러 반환
-        guard let publishPermissions = self.publishPermissions else {
-            self.delegate?.didFailTask(socialType: .facebook, connectType: .post, errorType: .permission, error: nil)
-            return
-        }
-        
-        if let _ = FBSDKAccessToken.current(), hasGrantedPermissions(permissions: publishPermissions) {
-            FBSDKShareAPI.share(with: shareContent, delegate: self)
-        } else {
-            logInWithPublishPermissions(content: shareContent, permissions: publishPermissions)
-        }
-    }
-    
-    
-    func postDialog(fromController: UIViewController?, message: String?, imageURL: String?, contentURL: String?, customInfo: [String : Any]?) {
         
         guard let contentURL = contentURL else {
             let error = NSError(domain: "facebook.com", code: 500, userInfo: ["message": "not initalized contentURL"])
@@ -67,7 +64,7 @@ extension FacebookKit: SocialLoginKitPostProtocol {
             shareContent.quote = quote
         }
         
-        FBSDKShareDialog.show(from: fromController, with: shareContent, delegate: self)
+        FBSDKShareDialog.show(from: viewController, with: shareContent, delegate: self)
     }
 }
 

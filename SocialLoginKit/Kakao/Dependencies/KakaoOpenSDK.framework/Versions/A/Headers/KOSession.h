@@ -123,10 +123,20 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
  */
 @property(nonatomic, readonly, copy) NSString *refreshToken;
 /*!
+ * @property expiresAccessTokenTime
+ * @abstract accessToken이 만료되는 시각.
+ */
+@property(nonatomic, readonly, copy) NSDate *expiresAccessTokenTime;
+/*!
  * @property state
  * @abstract 인증 상태
  */
 @property(nonatomic, readonly) KOSessionState state;
+/*!
+ * @property clientSecret
+ * @abstract 클라이언트 시크릿. AppDelegate의 application:didFinishLaunchingWithOptions: 메소드에서 값을 설정해주어야 한다.
+ */
+@property(nonatomic, copy) NSString *clientSecret;
 
 /*!
  * @property automaticPeriodicRefresh
@@ -140,8 +150,10 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
  */
 @property (nonatomic, weak) UIViewController *presentingViewController;
 
-@property (nonatomic, assign) UIBarStyle presentedViewBarStyle;
-@property (nonatomic, assign, getter=isPresentedViewBarTranslucent) BOOL presentedViewBarTranslucent;
+@property (nonatomic, assign) UIStatusBarStyle presentedViewStatusBarStyle;
+@property (nonatomic, strong) UIColor *presentedViewBarTitleColor;
+@property (nonatomic, assign) UIBarStyle presentedViewBarStyle DEPRECATED_ATTRIBUTE;
+@property (nonatomic, assign, getter=isPresentedViewBarTranslucent) BOOL presentedViewBarTranslucent DEPRECATED_ATTRIBUTE;
 @property (nonatomic, strong) UIColor *presentedViewBarTintColor;
 @property (nonatomic, strong) UIColor *presentedViewBarButtonTintColor;
 
@@ -236,6 +248,12 @@ typedef NS_ENUM(NSInteger, KOAgeAuthProperty) {
  인증되어 있는지 여부.
  */
 - (BOOL)isOpen;
+
+/*!
+ access token을 갱신한다.
+ @param completionHandler 갱신 완료시 실행될 block.
+ */
+- (void)refreshAccessTokenWithCompletionHandler:(KOSessionCompletionHandler)completionHandler;
 
 /*!
  새로운 연령 인증이 필요할 경우 사용자에게 연령 인증관련 창을 띄워서 연령 인증을 유도합니다. 제휴를 통해 권한이 부여된 특정 앱에서만 호출 가능합니다.

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SocialLoginKit
 
 class ViewController: UIViewController {
 

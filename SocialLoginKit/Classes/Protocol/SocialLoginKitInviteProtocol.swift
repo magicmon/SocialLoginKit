@@ -18,5 +18,5 @@ protocol SocialLoginKitInviteProtocol {
      - parameter message: 초대 메시지
      - parameter customInfo: 그 밖의 정보(deep link 등)
      */
-    func invite(fromController: UIViewController?, inviteLink: String, imageURL: String?, message: String?, customInfo: [String: Any]?)
+    func invite(fromController: UIViewController?, inviteLink: String, imageURL: String?, message: String, customInfo: [String: Any]?)
 }

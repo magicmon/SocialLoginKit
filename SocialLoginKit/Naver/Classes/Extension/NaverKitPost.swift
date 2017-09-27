@@ -9,11 +9,7 @@
 import UIKit
 
 extension NaverKit: SocialLoginKitPostProtocol {
-    func post(message: String?, imageURL: String?, contentURL: String?, customInfo: [String: Any]?) {
+    func post(message: String, imageURL: String?, contentURL: String?, customInfo: [String: Any]?, from viewController: UIViewController) {
         // 앱 설치 유무 확인
-    }
-    
-    func postDialog(fromController: UIViewController?, message: String?, imageURL: String?, contentURL: String?, customInfo: [String : Any]?) {
-        
     }
 }

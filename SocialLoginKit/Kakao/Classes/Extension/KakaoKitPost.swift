@@ -9,75 +9,69 @@ import UIKit
 
 extension KakaoKit: SocialLoginKitPostProtocol {
     
-    func post(message: String?, imageURL: String?, contentURL: String?, customInfo: [String: Any]?) {
+    func post(message: String, imageURL: String?, contentURL: String?, customInfo: [String: Any]?, from viewController: UIViewController) {
         post(type: .post, message: message, imageURL: imageURL, contentURL: contentURL, isWebLink: true, customInfo: customInfo)
     }
     
-    func postDialog(fromController: UIViewController?, message: String?, imageURL: String?, contentURL: String?, customInfo: [String : Any]?) {
-        post(type: .post, message: message, imageURL: imageURL, contentURL: contentURL, isWebLink: true, customInfo: customInfo)
-    }
-    
-    internal func post(type connectType: SocialLoginKitTaskType, message: String?, imageURL: String?, contentURL: String?, isWebLink: Bool, customInfo: [String : Any]?) {
+    internal func post(type connectType: SocialLoginKitTaskType, message: String, imageURL: String?, contentURL: String?, isWebLink: Bool, customInfo: [String : Any]?) {
+        
         // 앱 설치 유무 확인
-        if KOAppCall.canOpenKakaoTalkAppLink() == false {
+        if KLKTalkLinkCenter.shared().canOpenTalkLink() == false {
             self.delegate?.didFailTask(socialType: .kakao, connectType: connectType, errorType: .notInstalled, error: nil)
+            return
         }
         
-        var linkObject: [KakaoTalkLinkObject] = []
-        
-        if let message = message {
-            if let label = KakaoTalkLinkObject.createLabel(message) {
-                linkObject.append(label)
+        let template = KLKFeedTemplate { (feedTemplateBuilder) in
+            
+            // 컨텐츠
+            feedTemplateBuilder.content = KLKContentObject(builderBlock: { (contentBuilder) in
+                contentBuilder.title = message
+                if let imageURL = imageURL, let contentsOfURL = URL(string: imageURL) {
+                    contentBuilder.imageURL = contentsOfURL
+                }
+                contentBuilder.link = KLKLinkObject(builderBlock: { (linkBuilder) in
+                    if let contentURL = contentURL {
+                        linkBuilder.mobileWebURL = URL(string: contentURL)
+                    }
+                })
+            })
+            
+            // 버튼
+            if isWebLink {
+                feedTemplateBuilder.addButton(KLKButtonObject(builderBlock: { (buttonBuilder) in
+                    buttonBuilder.title = "웹으로 보기"
+                    buttonBuilder.link = KLKLinkObject(builderBlock: { (linkBuilder) in
+                        if let contentURL = contentURL {
+                            linkBuilder.mobileWebURL = URL(string: contentURL)
+                        }
+                    })
+                }))
             }
+            
+            feedTemplateBuilder.addButton(KLKButtonObject(builderBlock: { (buttonBuilder) in
+                buttonBuilder.title = "앱으로 보기"
+                buttonBuilder.link = KLKLinkObject(builderBlock: { (linkBuilder) in
+                    if let customInfo = customInfo {
+                        var param = [String]()
+                        for key in customInfo.keys {
+                            if let value = customInfo[key] as? String {
+                                param.append("\(key)=\(value)")
+                            }
+                        }
+                        let params = param.joined(separator: "&")
+                        
+                        linkBuilder.iosExecutionParams = params
+                        linkBuilder.androidExecutionParams = params
+                    }
+                })
+            }))
         }
         
-        if let imageURL = imageURL {
-            if let contentsOfURL = URL(string: imageURL), let data = try? Data(contentsOf: contentsOfURL), let downImage = UIImage(data: data) {
-                if let image = KakaoTalkLinkObject.createImage(imageURL, width: Int32(downImage.size.width), height: Int32(downImage.size.height)) {
-                    linkObject.append(image)
-                }
-            } else {
-                if let image = KakaoTalkLinkObject.createImage(imageURL, width: 130, height: 130) {
-                    linkObject.append(image)
-                }
-            }
-        }
-        
-        if linkObject.count > 0 {
-            
-            var actionObject: [KakaoTalkLinkAction] = []
-            
-            var execparam: [String: Any] = [:]
-            
-            if let customInfo = customInfo {
-                execparam = customInfo
-            }
-            
-            if let androidAppAction = KakaoTalkLinkAction.createAppAction(.android, devicetype: .phone, marketparam: ["referrer": "kakaotalklink"], execparam: execparam) {
-                actionObject.append(androidAppAction)
-            }
-            
-            if let iphoneAppAction = KakaoTalkLinkAction.createAppAction(.IOS, devicetype: .phone, marketparam: ["referrer": "kakaotalklink"], execparam: execparam) {
-                actionObject.append(iphoneAppAction)
-            }
-            
-            if let contentURL = contentURL, isWebLink == true {
-                if let webLinkActionUsingPC = KakaoTalkLinkAction.createWebAction(contentURL) {
-                    actionObject.append(webLinkActionUsingPC)
-                }
-                
-                if let webLink = KakaoTalkLinkObject.createWebLink("웹에서 보기", url: contentURL) {
-                    linkObject.append(webLink)
-                }
-            }
-            
-            if let button = KakaoTalkLinkObject.createAppButton("앱에서 보기", actions: actionObject) {
-                linkObject.append(button)
-            }
-            
-            KOAppCall.openKakaoTalkAppLink(linkObject)
-        } else {
-            self.delegate?.didFailTask(socialType: .kakao, connectType: connectType, errorType: .noData, error: nil)
-        }
+        // 카카오링크 실행
+        KLKTalkLinkCenter.shared().sendDefault(with: template, success: { [weak self] (warningMsg, argumentMsg) in
+            self?.delegate?.didSuccessTask(socialType: .kakao, connectType: connectType)
+        }, failure: { [weak self] (error) in
+            self?.delegate?.didFailTask(socialType: .kakao, connectType: connectType, errorType: .unknown, error: error)
+        })
     }
 }

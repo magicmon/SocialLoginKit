@@ -109,8 +109,8 @@ extension FacebookKit {
      - parameter content: 업로드 할 컨텐츠
      - parameter permissions: 로그인 시도 시 요청할 퍼미션
      */
-    func logInWithPublishPermissions(content: FBSDKShareLinkContent, permissions: [String]) {
-        FBSDKLoginManager().logIn(withPublishPermissions: permissions, handler: { (loginResult, error) in
+    func logInWithPublishPermissions(content: FBSDKShareLinkContent, permissions: [String], from viewController: UIViewController) {
+        FBSDKLoginManager().logIn(withPublishPermissions: permissions, from: viewController) { (loginResult, error) in
             if let _ = error {
                 self.delegate?.didFailTask(socialType: .facebook, connectType: .post, errorType: .unknown, error: error)
             } else {
@@ -121,6 +121,6 @@ extension FacebookKit {
                 
                 FBSDKShareAPI.share(with: content, delegate: self)
             }
-        })
+        }
     }
 }

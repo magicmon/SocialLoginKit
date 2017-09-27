@@ -52,6 +52,11 @@
 + (UIImage *)kakaoAccountIconForButton;
 
 /*!
+ 로그인 선택취소 아이콘
+ */
++ (UIImage *)kakaoLoginSelectCancelIconForButton;
+
+/*!
  웹뷰용
  */
 + (UIImage *)webViewBackButton;

@@ -14,11 +14,11 @@ public class KakaoKitUserProfile: SocialLoginKitUserProfile {
 
     func setUserProfile(user: KOUser) {
         self.userID = "\(user.id)"
-        self.nickname = user.properties["nickname"] as? String
-        self.name = user.properties["name"] as? String
-        self.gender = user.properties["gender"] as? String
-        self.age = user.properties["age"] as? String
-        self.profileImagePath = user.properties["profile_image"] as? String
-        self.thumnailImagePath = user.properties["thumbnail_image"] as? String
+        self.nickname = user.properties?["nickname"] as? String
+        self.name = user.properties?["name"] as? String
+        self.gender = user.properties?["gender"] as? String
+        self.age = user.properties?["age"] as? String
+        self.profileImagePath = user.properties?["profile_image"] as? String
+        self.thumnailImagePath = user.properties?["thumbnail_image"] as? String
     }
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright 2015-2016 Kakao Corp.
+ * Copyright 2015-2017 Kakao Corp.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,5 @@
 #import "KOSessionTask+TokenAPI.h"
 #import "KOSessionTask+FriendAPI.h"
 #import "KOSessionTask+AgeAuthAPI.h"
-#import "KOSessionTask+StorageAPI.h"
 
-#define KAKAO_SDK_IOS_VERSION_STRING @"1.0.71"
+#define KAKAO_SDK_IOS_VERSION_STRING @"1.4.3"

@@ -29,7 +29,7 @@ typedef NS_ENUM(NSInteger, KOChatType) {
     KOChatTypeGroup = 0
 };
 
-/*!
+/*
  @abstract (Deprecated) KOChatType 을 문자열로 변환하는 함수.
  */
 extern NSString* convertChatTypeString(KOChatType type) DEPRECATED_ATTRIBUTE;

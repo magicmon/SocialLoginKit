@@ -25,6 +25,7 @@
 /*!
  @abstract 카카오톡등의 카카오앱을 호출하는 클래스
  */
+DEPRECATED_MSG_ATTRIBUTE("Use 'KakaoLink' framework.")
 @interface KOAppCall : NSObject
 
 /*!

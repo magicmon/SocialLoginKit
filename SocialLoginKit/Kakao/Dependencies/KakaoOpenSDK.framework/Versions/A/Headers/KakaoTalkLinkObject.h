@@ -30,6 +30,7 @@
  * @class KakaoTalkLinkObject
  * @abstract 카카오톡 LINK 를 호출할떄 필요한 내용을 포함하는 객체
  */
+DEPRECATED_MSG_ATTRIBUTE("Use 'KakaoLink' framework.")
 @interface KakaoTalkLinkObject : NSObject
 
 @property(nonatomic, readonly) NSString *type;

@@ -9,7 +9,7 @@
 import UIKit
 
 extension KakaoKit: SocialLoginKitInviteProtocol {
-    func invite(fromController: UIViewController?, inviteLink: String, imageURL: String?, message: String?, customInfo: [String: Any]?) {
+    func invite(fromController: UIViewController?, inviteLink: String, imageURL: String?, message: String, customInfo: [String: Any]?) {
         post(type: .invite, message: message, imageURL: imageURL, contentURL: inviteLink, isWebLink: false, customInfo: customInfo)
     }
 }

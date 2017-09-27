@@ -24,12 +24,12 @@
 
 @interface KOUtils : NSObject
 
-/*!
+/*
  @abstract 카카오링크 콜백 URL 정보를 얻는다.
  */
 + (NSString *)kakaoLinkCallbackURL;
 
-/*!
+/*
  @abstract SDK 기본 헤더 정보를 얻는다.
  */
 + (NSString *)kaHeader;
