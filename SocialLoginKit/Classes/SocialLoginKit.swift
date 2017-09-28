@@ -43,7 +43,7 @@ public let kSocialLoginKitPostQuote           = "kSocialLoginKitPostQuote"
 
 
 public class SocialLoginKit: NSObject {
-    static public let sharedInstance: SocialLoginKit = SocialLoginKit()
+    static public let shared: SocialLoginKit = SocialLoginKit()
     
     
     private override init() {

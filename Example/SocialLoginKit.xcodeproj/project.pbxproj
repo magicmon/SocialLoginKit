@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0FD015A21F7C841300E99018 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FD015A11F7C841300E99018 /* ProfileViewController.swift */; };
 		13AFE3538AF7362E8E110F8E /* Pods_SocialLoginKit_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D9B85B053028205A06AC2F6 /* Pods_SocialLoginKit_Tests.framework */; };
 		3BCEF74067D1366B6C8ED8F8 /* Pods_SocialLoginKit_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80A6E973B331897E5B9A6E4A /* Pods_SocialLoginKit_Example.framework */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
@@ -28,11 +29,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0FD015A11F7C841300E99018 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1D9B85B053028205A06AC2F6 /* Pods_SocialLoginKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialLoginKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D20ADED2D296093D8A94840 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; name = README.md; path = ../README.md; sourceTree = "<group>"; };
+		2D20ADED2D296093D8A94840 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		508EB002612D8FBDAEABE5FB /* Pods-SocialLoginKit_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLoginKit_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialLoginKit_Example/Pods-SocialLoginKit_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5C68F7D792DC380B0C17B47D /* Pods-SocialLoginKit_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLoginKit_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialLoginKit_Tests/Pods-SocialLoginKit_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		5E76CF3B861FCB88AA30EEEF /* SocialLoginKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; name = SocialLoginKit.podspec; path = ../SocialLoginKit.podspec; sourceTree = "<group>"; };
+		5E76CF3B861FCB88AA30EEEF /* SocialLoginKit.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = SocialLoginKit.podspec; path = ../SocialLoginKit.podspec; sourceTree = "<group>"; };
 		607FACD01AFB9204008FA782 /* SocialLoginKit_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialLoginKit_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACD41AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACD51AFB9204008FA782 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +45,7 @@
 		607FACE51AFB9204008FA782 /* SocialLoginKit_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SocialLoginKit_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
-		78BA94215A877181E4F07DB5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
+		78BA94215A877181E4F07DB5 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		80A6E973B331897E5B9A6E4A /* Pods_SocialLoginKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialLoginKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A166F0D7FDD66ACE3463DF5F /* Pods-SocialLoginKit_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLoginKit_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SocialLoginKit_Example/Pods-SocialLoginKit_Example.debug.xcconfig"; sourceTree = "<group>"; };
 		A848A1909EB7B78C0B2D99F4 /* Pods-SocialLoginKit_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLoginKit_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SocialLoginKit_Tests/Pods-SocialLoginKit_Tests.release.xcconfig"; sourceTree = "<group>"; };
@@ -95,6 +97,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
+				0FD015A11F7C841300E99018 /* ProfileViewController.swift */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
 				607FACDE1AFB9204008FA782 /* LaunchScreen.xib */,
@@ -388,6 +391,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				0FD015A21F7C841300E99018 /* ProfileViewController.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

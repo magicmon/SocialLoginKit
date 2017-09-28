@@ -36,14 +36,27 @@ extension KakaoKit: SocialLoginKitLoginProtocol {
         
 
         session.open(completionHandler: { (error) in
+            session.presentingViewController = nil
+            
             if session.isOpen() {
                 self.delegate?.didSuccessTask(socialType: .kakao, connectType: .login)
             } else {
-                self.delegate?.didFailTask(socialType: .kakao, connectType: .login, errorType: .unknown, error: error)
+                
+                guard let error = error else {
+                    self.delegate?.didFailTask(socialType: .kakao, connectType: .login, errorType: .unknown, error: nil)
+                    return
+                }
+                
+                switch ((error as NSError).code) {
+                case Int(KOErrorCancelled.rawValue):
+                    self.delegate?.didFailTask(socialType: .kakao, connectType: .login, errorType: .userCancel, error: error)
+                default:
+                    self.delegate?.didFailTask(socialType: .kakao, connectType: .login, errorType: .unknown, error: error)
+                }
             }
 
         }, authParams: nil,
-           authTypes: [NSNumber.init(value: KOAuthType.talk.rawValue)])
+           authTypes: [NSNumber(value: KOAuthType.talk.rawValue), NSNumber(value: KOAuthType.account.rawValue)])
     }
     
     func logout(withServerToken: Bool = false) {

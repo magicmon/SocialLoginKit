@@ -13,7 +13,9 @@ public class KakaoKitUserProfile: SocialLoginKitUserProfile {
     public var thumnailImagePath: String?
 
     func setUserProfile(user: KOUser) {
-        self.userID = "\(user.id)"
+        if let userId = user.id {
+            self.userID = "\(userId)"
+        }
         self.nickname = user.properties?["nickname"] as? String
         self.name = user.properties?["name"] as? String
         self.gender = user.properties?["gender"] as? String

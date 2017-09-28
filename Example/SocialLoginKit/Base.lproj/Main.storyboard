@@ -1,25 +1,140 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Q5E-vb-HqJ">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="xTQ-xO-SJ6">
+            <objects>
+                <navigationController id="Q5E-vb-HqJ" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b6X-9Q-fSD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="vXZ-lx-hvc" kind="relationship" relationship="rootViewController" id="Xqb-R9-fpZ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dnk-ci-VDx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-700" y="37"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="SocialLoginKit_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gMj-fh-xXv">
+                                <rect key="frame" x="146" y="617" width="82" height="30"/>
+                                <state key="normal" title="kakao Login"/>
+                                <connections>
+                                    <action selector="tappedKakaoLogin" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2Dr-8a-wbh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0kW-WD-VdV">
+                                <rect key="frame" x="146" y="579" width="82" height="30"/>
+                                <state key="normal" title="Naver Login"/>
+                                <connections>
+                                    <action selector="tappedNaverLogin" destination="vXZ-lx-hvc" eventType="touchUpInside" id="jve-q2-LKs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="esH-AD-Ril">
+                                <rect key="frame" x="133" y="541" width="108" height="30"/>
+                                <state key="normal" title="Facebook Login"/>
+                                <connections>
+                                    <action selector="tappedFacebookLogin" destination="vXZ-lx-hvc" eventType="touchUpInside" id="cxQ-Ro-z2z"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="esH-AD-Ril" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="DGq-cP-jM2"/>
+                            <constraint firstItem="0kW-WD-VdV" firstAttribute="top" secondItem="esH-AD-Ril" secondAttribute="bottom" constant="8" id="H1v-Tu-xxy"/>
+                            <constraint firstItem="0kW-WD-VdV" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="QK1-mN-h7n"/>
+                            <constraint firstItem="gMj-fh-xXv" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="Qhz-Ld-afE"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="gMj-fh-xXv" secondAttribute="bottom" constant="20" id="lx4-sW-Gza"/>
+                            <constraint firstItem="gMj-fh-xXv" firstAttribute="top" secondItem="0kW-WD-VdV" secondAttribute="bottom" constant="8" id="vnh-m6-4aR"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Ygr-qg-VVJ"/>
+                    <connections>
+                        <segue destination="POG-de-LNU" kind="presentation" identifier="ProfileView" id="0iN-4y-oWY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="145" y="36"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vTO-pT-LA6">
+            <objects>
+                <navigationController id="POG-de-LNU" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="NYP-7R-KSL">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9sf-vS-Apv" kind="relationship" relationship="rootViewController" id="nvz-YI-A2Z"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lCz-VQ-Pp6" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="145" y="856"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="bxJ-Kk-BA5">
+            <objects>
+                <viewController id="9sf-vS-Apv" customClass="ProfileViewController" customModule="SocialLoginKit_Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hAK-IA-3f4"/>
+                        <viewControllerLayoutGuide type="bottom" id="G1O-ME-exr"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LrQ-QJ-Q2e">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Nj-ly-ARR">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="7Nj-ly-ARR" firstAttribute="leading" secondItem="LrQ-QJ-Q2e" secondAttribute="leading" id="DeE-At-ef7"/>
+                            <constraint firstAttribute="trailing" secondItem="7Nj-ly-ARR" secondAttribute="trailing" id="O6n-KM-pMw"/>
+                            <constraint firstItem="7Nj-ly-ARR" firstAttribute="top" secondItem="hAK-IA-3f4" secondAttribute="bottom" id="tPO-bY-Rla"/>
+                            <constraint firstItem="G1O-ME-exr" firstAttribute="top" secondItem="7Nj-ly-ARR" secondAttribute="bottom" id="yUu-Oa-YX3"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="iaj-KN-rJr">
+                        <barButtonItem key="rightBarButtonItem" title="로그아웃" id="whH-WG-B6z">
+                            <connections>
+                                <action selector="tappedLogout" destination="9sf-vS-Apv" id="Fh3-ex-Kpw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="textView" destination="7Nj-ly-ARR" id="ag7-qP-4Xi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ul4-uq-rF7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892" y="855.9220389805098"/>
         </scene>
     </scenes>
 </document>
